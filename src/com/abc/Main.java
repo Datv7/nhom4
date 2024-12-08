@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.SimpleGraph;
+
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("aa");
-//		Map<Character, Set<Character>> graph = new HashMap<>();
-		
 		
 		Graph graph=new Graph();
 		graph.addEdges('a', Set.of('b', 'c'));
@@ -20,10 +20,16 @@ public class Main {
 		graph.addEdges('d',Set.of('b', 'c', 'e'));
 		graph.addEdges('e', Set.of('d'));
 		
-		Bronkerbosch bronkerbosch=new Bronkerbosch();
-		List<Set<Character>> cliques=bronkerbosch.findCliques(graph.getAdjacencyList());
-		
-		for(Set<Character> s:cliques) {
+		List<Set<Character>> bronKerbosch=BronKerbosch.findMaximalCliques(graph.getAdjacencyList());
+		for(Set<Character> s:bronKerbosch) {
+			System.out.println(s.toString());
+		}
+		System.out.println("===");
+		BranchAndBound branchAndBound=new BranchAndBound();
+		SimpleGraph<String, DefaultEdge> simpleGraph=graph.convertToSimpleGraph();
+		branchAndBound.branchAndBound(new HashSet<>(), new HashSet<>(simpleGraph.vertexSet()), new HashSet<>(), simpleGraph);
+		List<Set<Character>> brandAndBound=branchAndBound.getAllCliques();
+		for(Set<Character> s:brandAndBound) {
 			System.out.println(s.toString());
 		}
         

@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class Bronkerbosch {
-	public  List<Set<Character>> findCliques(Map<Character, Set<Character>> graph) {
+public class BronKerbosch {
+	public static List<Set<Character>> findMaximalCliques(Map<Character, Set<Character>> graph) {
 		
 		//khởi tạo tham số
 		List<Set<Character>> cliques=new ArrayList<Set<Character>>();
@@ -20,7 +20,7 @@ public class Bronkerbosch {
 		return cliques;
 		
 	}
-	private  void bronkerbosch(Set<Character> r,Set<Character> p,Set<Character> x,
+	private static void bronkerbosch(Set<Character> r,Set<Character> p,Set<Character> x,
 			List<Set<Character>> cliques,Map<Character, Set<Character>> graph) {
 		
 		// kiểm tra dừng khi p và x đồng thời rỗng
