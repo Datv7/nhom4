@@ -12,7 +12,7 @@ import org.jgrapht.graph.SimpleGraph;
 
 public class Graph {
 	private Map<Character, Set<Character>> adjacencyList;
-	private List<Set<Character>> maximalCliques;
+	private List<Set<Character>> maximalCliques=new ArrayList<Set<Character>>();
 	public Graph(Map<Character, Set<Character>> adjacencyList) {
 		this.adjacencyList = adjacencyList;
 	}
