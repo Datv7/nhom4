@@ -37,10 +37,10 @@ public class Main {
         
 	}
 	public static void timeExecution(Graph graph) {
-		graph.printGraph();
+		graph.printGraph(); //in đồ thị
 		long start = System.nanoTime();
 		Map<Character, Set<Character>> adjacencyList=graph.getAdjacencyList();
-		List<Set<Character>> bronKerbosch=BronKerbosch.findMaximalCliques(adjacencyList);
+		List<Set<Character>> bronKerbosch=BronKerbosch.findMaximalCliques(adjacencyList); // lấy maximal cliques bằng bronkerbosch
 		long duration = System.nanoTime() - start;
 		System.out.println("Bron Kerbosch");
 		for(Set<Character> s:bronKerbosch) {
@@ -48,7 +48,7 @@ public class Main {
 		}
 		
 		long start2 = System.nanoTime();
-		Set<Set<Character>> banchAndBound=BranchAndBound.findMaximalCliques(adjacencyList);
+		Set<Set<Character>> banchAndBound=BranchAndBound.findMaximalCliques(adjacencyList);// lấy maximal cliques bằng banchAndBound
 		long duration2 = System.nanoTime() - start2;
 		System.out.println("Brand And Bound");
 		for(Set<Character> s:banchAndBound) {

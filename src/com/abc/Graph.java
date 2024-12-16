@@ -61,7 +61,7 @@ public class Graph {
 		Random random=new Random();
 		Graph graph=new Graph();
 		if (edges > vertices * (vertices - 1) / 2) {
-            throw new RuntimeException("Số cạnh vượt quá giới hạn cho phép trong đồ thị đơn không hướng.");
+            throw new RuntimeException("Số cạnh vượt quá giới hạn cho phép.");
         }
 
         for (int i = 0; i < vertices; i++) {
