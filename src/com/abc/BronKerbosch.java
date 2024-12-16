@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class BronKerbosch {
+	
 	public static List<Set<Character>> findMaximalCliques(Map<Character, Set<Character>> graph) {
 		
 		//khởi tạo tham số
@@ -16,11 +17,11 @@ public class BronKerbosch {
 		Set<Character> x= new HashSet<Character>(); //x rỗng
 		
 		
-		bronkerbosch(r, p, x, cliques, graph);
+		bronKerbosch(r, p, x, cliques, graph);
 		return cliques;
 		
 	}
-	private static void bronkerbosch(Set<Character> r,Set<Character> p,Set<Character> x,
+	private static void bronKerbosch(Set<Character> r,Set<Character> p,Set<Character> x,
 			List<Set<Character>> cliques,Map<Character, Set<Character>> graph) {
 		
 		// kiểm tra dừng khi p và x đồng thời rỗng
@@ -41,7 +42,7 @@ public class BronKerbosch {
 			Set<Character> x2=new HashSet<Character>(x);
 			x2.retainAll(graph.get(c)); //cắt tỉa nhánh bằng cách lưu lại những đỉnh đã xét = phép giao với tập hợp các đỉnh kề
 			
-			bronkerbosch(r2, p2, x2, cliques, graph);//đệ quy với tham số mới
+			bronKerbosch(r2, p2, x2, cliques, graph);//đệ quy với tham số mới
 
 			p.remove(c); //quay lui với việc loại bỏ đỉnh vừa xét khỏi tập đỉnh tiềm năng
 			x.add(c); //quay lui với việc thêm đỉnh vừa xét vào tập đỉnh đã xét
