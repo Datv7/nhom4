@@ -26,6 +26,7 @@ public class BronKerbosch {
 		
 		// kiểm tra dừng khi p và x đồng thời rỗng
 		if(p.isEmpty() && x.isEmpty()) {
+			if(r.isEmpty()) return;
 			cliques.add(r);
 			return;
 		}

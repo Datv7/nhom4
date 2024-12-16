@@ -1,15 +1,8 @@
 package com.abc;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
-
-import org.jgrapht.graph.DefaultEdge;
-import org.jgrapht.graph.SimpleGraph;
 
 public class Main {
 	public static void main(String[] args) {
@@ -18,7 +11,7 @@ public class Main {
 		timeExecution(graph1);
 		
 		Graph graph2=Graph.createGraph(2);
-		System.out.println("/n/nĐồ thị 1 đỉnh");
+		System.out.println("\n\nĐồ thị 1 đỉnh\n");
 		timeExecution(graph2);
 		
 		Graph graph3=Graph.createGraph(3);
@@ -31,11 +24,11 @@ public class Main {
 		
 		Graph graph5=Graph.createGraph(5);
 		System.out.println("\n\nĐồ thị hoàn chỉnh\n");
-		timeExecution(graph1);
+		timeExecution(graph5);
 		
 		Graph graph6=Graph.createGraph(6);
 		System.out.println("\n\nĐồ thị vòng\n");
-		timeExecution(graph1);
+		timeExecution(graph6);
 		
 		Graph graph7=Graph.genRandomGraph(20, 50);
 		System.out.println("\n\nĐồ thị lớn\n");
@@ -48,19 +41,21 @@ public class Main {
 		long start = System.nanoTime();
 		Map<Character, Set<Character>> adjacencyList=graph.getAdjacencyList();
 		List<Set<Character>> bronKerbosch=BronKerbosch.findMaximalCliques(adjacencyList);
+		long duration = System.nanoTime() - start;
 		System.out.println("Bron Kerbosch");
 		for(Set<Character> s:bronKerbosch) {
 			System.out.println(s.toString());
 		}
+		
+		long start2 = System.nanoTime();
+		Set<Set<Character>> banchAndBound=BranchAndBound.findMaximalCliques(adjacencyList);
+		long duration2 = System.nanoTime() - start2;
 		System.out.println("Brand And Bound");
-		BranchAndBound branchAndBound=new BranchAndBound();
-		branchAndBound.findMaximalCliques(adjacencyList);
-		for(Set<Character> s:branchAndBound.getAllCliques()) {
+		for(Set<Character> s:banchAndBound) {
 			System.out.println(s.toString());
 		}
-		
-		long duration = System.nanoTime() - start;
-		System.out.println("Thời gian chạy: " + duration + " nanoseconds");
+		System.out.println("Bron Kerbosch: "+duration+ " nanoseconds");
+		System.out.println("Brand And Bound: "+duration2+ " nanoseconds");
    }
 	
 	

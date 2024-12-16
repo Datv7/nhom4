@@ -8,9 +8,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-import org.jgrapht.graph.DefaultEdge;
-import org.jgrapht.graph.SimpleGraph;
-
 public class Graph {
 	private Map<Character, Set<Character>> adjacencyList;
 	private List<Set<Character>> maximalCliques=new ArrayList<Set<Character>>();
@@ -68,14 +65,14 @@ public class Graph {
         }
 
         for (int i = 0; i < vertices; i++) {
-        	Character c=(char)('A' + i);
+        	Character c=(char)('a' + i);
         	graph.addVertex(c);
         }
         int currentEdges = 0;
 
         while (currentEdges < edges) {
-            char vertex1 = (char) ('A' + random.nextInt(vertices));
-            char vertex2 = (char) ('A' + random.nextInt(vertices));
+            char vertex1 = (char) ('a' + random.nextInt(vertices));
+            char vertex2 = (char) ('a' + random.nextInt(vertices));
 
             if (vertex1 != vertex2 && !graph.getNeibors(vertex1).contains(vertex2)) {
                 graph.addEdge(vertex1, vertex2);
@@ -90,18 +87,18 @@ public class Graph {
 
         switch (type) {
             case 1: // Đồ thị rỗng
-
+            	break;
             case 2: // Đồ thị 1 đỉnh
-                graph.addVertex('A');
+                graph.addVertex('a');
                 break;
 
             case 3: // Đồ thị 2 đỉnh không kết nối
-            	graph.addVertex('A');
-            	graph.addVertex('B');
+            	graph.addVertex('a');
+            	graph.addVertex('b');
                 break;
 
             case 4: // Đồ thị 2 đỉnh kết nối
-                graph.addEdge('A', 'B');
+                graph.addEdge('a', 'b');
                 break;
 
             case 5: // Đồ thị hoàn chỉnh
